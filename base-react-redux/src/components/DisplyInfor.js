@@ -23,7 +23,7 @@ class DisplayInfor extends React.Component {
                   <button
                     onClick={() => this.props.handleDeleteUserInfo(user.id)}
                   >
-                    Delete
+                    Removt user
                   </button>
                   <hr />
                 </div>
