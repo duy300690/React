@@ -1,38 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./DisplayInfo.scss";
 
-class DisplayInfor extends React.Component {
-  state = { showUser: true };
-  isShowUser = () => {
-    this.setState({ showUser: !this.state.showUser });
+const DisplayInfor = (props) => {
+  const { listUser } = props;
+  const [isShowHideUser, setShowHideUser] = useState(true);
+
+  const handleShowHideUser = () => {
+    setShowHideUser(!isShowHideUser);
   };
-  render() {
-    const { listUser } = this.props;
-    return (
-      <div>
-        <button onClick={() => this.isShowUser()}>
-          {this.state.showUser ? "Hide user" : "Show user"}
-        </button>
-        <div className="display-info-content">
-          {this.state.showUser &&
-            listUser.map((user) => {
-              return (
-                <div key={user.id} className={user.age > 30 ? "red" : "green"}>
-                  <div>My name is {user.name}</div>
-                  <div>I'm {user.age} year old</div>
-                  <button
-                    onClick={() => this.props.handleDeleteUserInfo(user.id)}
-                  >
-                    Remove
-                  </button>
-                  <hr />
-                </div>
-              );
-            })}
-        </div>
+
+  useEffect(() => {
+    console.log(">>>>useEffect",listUser.length)
+    if (listUser.length === 0) {
+      alert("The user has not been");
+    }
+  }, [listUser]);
+
+  return (
+    <>
+      <button onClick={handleShowHideUser}>
+        {!isShowHideUser ? "Show" : "Hide"} users
+      </button>
+      <div className="display-info-content">
+        {isShowHideUser &&
+          listUser.map((user) => {
+            return (
+              <div key={user.id} className={user.age > 30 ? "red" : "green"}>
+                <div>My name is {user.name}</div>
+                <div>I'm {user.age} year old</div>
+                <button onClick={() => props.handleDeleteUserInfo(user.id)}>
+                  Remove
+                </button>
+                <hr />
+              </div>
+            );
+          })}
       </div>
-    );
-  }
-}
+    </>
+  );
+};
 
 export default DisplayInfor;

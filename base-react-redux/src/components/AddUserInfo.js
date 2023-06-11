@@ -1,60 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 
-class AddUserInfo extends React.Component {
-  state = {
+
+const AddUserInfo = (props) => {
+  const [user, setUser] = useState({
     name: "Minh Duy",
-    address: "Q7",
     age: 33,
-  };
+  });
 
-  handleSetState = () => {
-    this.setState({
-      name: "Vo Minh Duy",
-      address: "HCM",
-    });
+  const handleOnChangeName = (e) => {
+    setUser({ name: e.target.value });
   };
-  handleOnChangeName = (event) => {
-    this.setState({
-      name: event.target.value,
-    });
+  const handleOnChangeAge = (e) => {
+    setUser({ age: e.target.value });
   };
-  handleOnChangeAge = (event) => {
-    this.setState({
-      age: event.target.value,
-    });
-  };
-
-  handleonSubmit = (e) => {
+  const handleonSubmit = (e) => {
     e.preventDefault();
-    this.props.handleAddUserInfo({
+     props.handleAddUserInfo({
       id: Math.floor(Math.random() * 100 + 1) + "-random",
-      name: this.state.name,
-      age: this.state.age,
+      name: user.name,
+      age: user.age,
     });
+    
   };
-  render() {
-    return (
-      <div>
-        My name {this.state.name}, I`m from {this.state.address}. I`m{" "}
-        {this.state.age} years old
-        <br />
-        <button onClick={() => this.handleSetState()}>Set State</button>
-        <form onSubmit={(e) => this.handleonSubmit(e)}>
-          Your name:{" "}
-          <input
-            onChange={(e) => this.handleOnChangeName(e)}
-            value={this.state.name}
-          />
-          Your age:{" "}
-          <input
-            onChange={(e) => this.handleOnChangeAge(e)}
-            value={this.state.age}
-          />
-          <button>Submit</button>
-        </form>
-      </div>
-    );
-  }
-}
+
+  return (
+    <>
+      <p>
+        My name is: {user.name}, I'm {user.age} years old
+      </p>
+      <form onSubmit={handleonSubmit}>
+        <p>
+          Your name: <input value={user.name} onChange={handleOnChangeName} />
+        </p>
+        <p>
+          Your age: <input value={user.age} onChange={handleOnChangeAge} />
+        </p>
+        <button type="submit">Submit</button>
+      </form>
+    </>
+  );
+};
 
 export default AddUserInfo;
