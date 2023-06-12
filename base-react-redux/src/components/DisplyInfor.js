@@ -10,7 +10,7 @@ const DisplayInfor = (props) => {
   };
 
   useEffect(() => {
-    console.log(">>>>useEffect",listUser.length)
+    console.log(">>>>useEffect", listUser.length);
     if (listUser.length === 0) {
       alert("The user has not been");
     }

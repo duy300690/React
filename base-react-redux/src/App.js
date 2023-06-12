@@ -1,8 +1,6 @@
-import logo from "./logo.svg";
-import MyComponent from "./components/MyCompanenet";
-
+import "./App.scss";
 function App() {
-  return <div className="App">{<MyComponent></MyComponent>}</div>;
+  return <div className="app-container">Hello World</div>;
 }
 
 export default App;
