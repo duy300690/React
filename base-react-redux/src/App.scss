@@ -45,6 +45,36 @@ body {
       }
     }
   }
+  .homepage-container {
+    .homepage-content {
+      padding: 100px;
+      width: 50%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      .title-1 {
+        font-size: 45px;
+        font-weight: 600;
+      }
+      .title-2 {
+        font-size: 25px;
+      }
+      .title-3 {
+        button {
+          border-radius: 5px;
+          padding: 0 15px;
+          background: #303030;
+          color: white;
+          &:hover {
+            background: black;
+          }
+          height: 40px;
+        }
+      }
+    }
+  }
 }
 
 video {
