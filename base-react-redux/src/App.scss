@@ -6,14 +6,38 @@ body {
   -wibkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+@media (min-width: 1850px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1800px !important;
+  }
+}
 .app-container {
   .header-container {
-    .navbar {
-      z-index: 10;
-      opacity: 0.6;
+    .btn-login {
+      border-radius: 5px;
+      margin-right: 15px;
+      padding: 0 15px;
+      border: 1px solid #535353;
+      height: 40px;
     }
-    .navbar-nav {
+    .btn-signup {
+      border-radius: 5px;
+      padding: 0 15px;
+      background: #303030;
+      color: white;
+      &:hover {
+        background: black;
+      }
+      height: 40px;
+    }
+    .navbar {
+      padding-top: 20px;
+      z-index: 10;
+      background-color: rgba(0, 0, 0, 0) !important;
       .nav-link {
         &.active {
           color: #00bfff;
